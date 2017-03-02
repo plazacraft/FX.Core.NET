@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    targetNamespace="urn:x-fx.org:fx.core.net-1.0-lib.license"
+    elementFormDefault="qualified"
+    xmlns="urn:x-fx.org:fx.core.net-1.0-lib.license"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+>
+  <xs:element name="LicenseConfig" type="LicenseConfigType" />
+
+  <xs:complexType name="LicenseConfigType" >
+    <xs:sequence>
+      <xs:element name="Licenses" type="LicensesType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="Signature" type="SignatureType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  
+  <xs:simpleType name="LicenseTypeType">
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="Professional"/>
+        <xs:enumeration value="Home"/>
+        <xs:enumeration value="Free"/>
+        <xs:enumeration value="Test"/>
+      </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="LicensesType">
+    <xs:sequence>
+      <xs:element name="Computers" type="ComputersType" minOccurs="0" maxOccurs="1" />
+      <xs:element name="License" minOccurs="0" maxOccurs="unbounded" type="LicenseType" />
+    </xs:sequence>
+    <xs:attribute name="IssuedFor" type="xs:string" use="required" />
+    <xs:attribute name="Expiration" type="xs:date" use="optional" />
+  </xs:complexType>
+  <xs:complexType name="ComputersType">
+    <xs:sequence>
+      <xs:element name="Computer" minOccurs="0" maxOccurs="unbounded" type="ComputerType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SignatureType">
+    <xs:simpleContent>
+      <xs:extension base="xs:base64Binary">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="ComputerType">
+    <xs:attribute name="Name" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="LicenseType" >
+    <xs:attribute name="Module" type="xs:string" use="required" />
+    <xs:attribute name="Version" type="xs:string" use="required" />
+    <xs:attribute name="Type" type="LicenseTypeType" use="required" />
+  </xs:complexType>
+
+
+
+
+</xs:schema>

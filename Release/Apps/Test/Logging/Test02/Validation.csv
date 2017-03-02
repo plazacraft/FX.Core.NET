@@ -1,0 +1,5 @@
+﻿File;App;Severity;Assembly;Method;Message
+log;0
+error;1
+error;TestApp;Error;FX.Core.NET.Test;FX.Core.NET.Test.Logging: Test - Boolean RunTestCode(System.String);Test Message 3
+error;TestApp;Error;FX.Core.NET.Test;FX.Core.NET.Test.Logging: Test - Boolean RunTestCode(System.String);Test Message 4

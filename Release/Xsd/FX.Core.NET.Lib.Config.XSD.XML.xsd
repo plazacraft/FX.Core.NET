@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    targetNamespace="urn:x-fx.org:fx.core.net-1.0-lib.config"
+    elementFormDefault="qualified"
+    xmlns="urn:x-fx.org:fx.core.net-1.0-lib.config"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <xs:element name="Config" type="ConfigType" />
+
+  <xs:complexType name="ConfigType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Application" type="ApplicationType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name ="ValueType">
+    <xs:simpleContent >
+      <xs:extension base="xs:string">
+        <xs:attribute name="Namespace" type="xs:string" use="required"/>
+        <xs:attribute name="Key" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>      
+
+  <xs:complexType name ="XmlValueType">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:any namespace="##other" />
+    </xs:choice>
+    <xs:attribute name="Namespace" type="xs:string" use="required"/>
+    <xs:attribute name="Key" type="xs:string" use="required"/>
+  </xs:complexType>
+
+
+  <xs:complexType name="ApplicationType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Value" type="ValueType" minOccurs="0" maxOccurs="unbounded" />
+        <xs:element name="XmlValue" type="XmlValueType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" use="required" />
+  </xs:complexType>
+  
+</xs:schema>

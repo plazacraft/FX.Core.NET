@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StateMachineDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                 xmlns="urn:x-fx.org:fx.core.net-1.0-lib.tools">
+  <IntMachine StartState="0">
+    <IntState Value="0">
+      <IntNextState NextState="1" Action="0" />
+      <IntNextState NextState="2" Action="1" />
+    </IntState>
+    <IntState Value="1">
+      
+    </IntState>
+    <IntState Value="2">
+      <IntNextState NextState="0" Action="0" />
+    </IntState>
+  </IntMachine>
+  </StateMachineDef>

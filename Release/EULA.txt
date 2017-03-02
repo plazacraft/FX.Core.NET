@@ -1,0 +1,9 @@
+Types of license:
+Free          - Free license for non comercial purpose. Some features may be limited with this license.
+Home          - Non commercial license for home user purpose
+Professional  - License can be used for commercial.
+Test          - License used only for Tests. This license cannot be used to run the application.
+
+No guarantee or any responsibility for any damage made by this software.
+
+Copyright: Plazacraft Roman Plaza (plazacraft@gmail.com)

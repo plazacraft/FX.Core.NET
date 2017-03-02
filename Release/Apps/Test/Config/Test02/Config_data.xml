@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Config xmlns="urn:x-fx.org:fx.core.net-1.0-lib.config">
+  <Application Name="TestApp">
+    <Value Namespace="FX.Core.NET.Test" Key="Value1">TestApp 1 Value 1 XML</Value>
+    <Value Namespace="FX.Core.NET.Test" Key="Value2"><![CDATA[TestApp 1 Value 2 XML]]></Value>
+  </Application>
+  <Application Name="TestApp2">
+    <Value Namespace="FX.Core.NET.Test" Key="Value1">TestApp 2 Value 1 XML</Value>
+    <Value Namespace="FX.Core.NET.Test" Key="Value2"><![CDATA[TestApp 2 Value 1 XML]]></Value>
+  </Application>
+</Config>

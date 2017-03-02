@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Provider xmlns="urn:x-fx.org:fx.core.net-1.0-lib.logging" Type="FX.Core.NET.Lib.Logging.Providers.MultiProvider, FX.Core.NET.Lib">
+  <Providers>
+    <Provider Type="FX.Core.NET.Lib.Logging.Providers.ConsoleProvider, FX.Core.NET.Lib" TraceSeverity="CriticalError Error Warning Information" />
+
+    <Provider Type="FX.Core.NET.Lib.Logging.Providers.FileProvider, FX.Core.NET.Lib" ConnectionString="Logging/Test01/log.csv" TimeLimit="1" MessageHeaders="All" />
+    <Provider Type="FX.Core.NET.Lib.Logging.Providers.FileProvider, FX.Core.NET.Lib" ConnectionString="Logging/Test01/error.csv" SizeLimit="1" TraceSeverity="Warning Error" MessageHeaders="All" />
+  </Providers>
+</Provider>

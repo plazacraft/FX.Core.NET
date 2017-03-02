@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="BuildDef"
+    targetNamespace="urn:x-fx.org:fx.core.net-1.0-build.lib"
+    elementFormDefault="qualified"
+    xmlns="urn:x-fx.org:fx.core.net-1.0-build.lib"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+
+  <xs:element name="BuildDef" type="BuildDefType" />
+  
+  <xs:complexType name="BuildDefType">
+    <xs:all>
+      <xs:element name="Tags" type="TagsType" minOccurs="0" />
+      <xs:element name="Tools" type="ToolsType" minOccurs="0" />
+      <xs:element name="Paths" type="PathsType" minOccurs="0" />
+      <xs:element name="Builds" type="BuildsType"  minOccurs="0" />
+      <xs:element name="Templates" type="TemplatesType" minOccurs="0" />
+    </xs:all>
+    <xs:attribute name="VerMajor" type="xs:string" use="optional" default="1" />
+    <xs:attribute name="VerMinor" type="xs:string" use="optional" default="0" />
+    <xs:attribute name="VerRel" type="xs:string" use="optional" default="0" />
+    <xs:attribute name="Version" type="xs:string" use="optional" default="#VER_MAJOR#.#VER_MINOR#.#VER_REL#.#REV#" />
+    <xs:attribute name="Project" type="xs:string" use="optional" default="" />
+    <xs:attribute name="AppFolder" type="xs:string" use="optional" default="#PROJECT# - #VERSION#" />
+    <xs:attribute name="LogsLimit" type="xs:string" use="optional" default="10"  />
+    <xs:attribute name="SpecialPattern" type="xs:string" use="optional"  default="!{0}!" />
+    <xs:attribute name="SchemeURI" type="xs:string" use="optional" default="urn:x-fx.org:#PROJECT#-#VER_MAJOR#.#VER_MINOR#" />
+    <xs:attribute name="FileNamePattern" type="xs:string" use="optional" default="#PROJECT# - #VERSION# - #FILE_NAME#" />
+  </xs:complexType>
+
+  <xs:simpleType name="BuildType">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        Build Types
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:normalizedString">
+      <xs:enumeration value="Lib" >
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Pure assembly
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AppConsole" >
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Application
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Xsd" >
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            For XSD namespace attribute is required
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="XsdRef" >
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            XML file to change VER_MAJOR and VER_MINOR tags for project build
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="File" >
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            File or folder to copy to output
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name ="TemplateType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="Name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TemplatesType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Template" type="TemplateType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TagsType">
+    <xs:attribute name="ExecPath" type="xs:string" use="optional" default="#EXEC_PATH#" />
+
+    <xs:attribute name="Project" type="xs:string" use="optional" default="#PROJECT#" />
+
+    <xs:attribute name="Config" type="xs:string" use="optional" default="#CONFIG#" />
+    <xs:attribute name="ProjectPath" type="xs:string" use="optional" default="#PROJECT_PATH#" />
+
+    <xs:attribute name="VerMajor" type="xs:string" use="optional" default="#VER_MAJOR#" />
+    <xs:attribute name="VerMinor" type="xs:string" use="optional" default="#VER_MINOR#" />
+    <xs:attribute name="VerRel" type="xs:string" use="optional" default="#VER_REL#" />
+    <xs:attribute name="Version" type="xs:string" use="optional" default="#VERSION#" />
+    <xs:attribute name="AppFolder" type="xs:string" use="optional" default="#APP#" />
+
+
+    <xs:attribute name="CertPath" type="xs:string" use="optional" default="#CERT_PATH#" />
+    <xs:attribute name="CertPass" type="xs:string" use="optional" default="#CERT_PASS#" />
+    <xs:attribute name="TargetDir" type="xs:string" use="optional" default="#TARGET_DIR#" />
+    <xs:attribute name="TargetFile" type="xs:string" use="optional" default="#TARGET_FILE#" />
+    <xs:attribute name="ProbePaths" type="xs:string" use="optional" default="#PROBE_PATHS#" />
+    <xs:attribute name="Revision" type="xs:string" use="optional" default="#REV#" />
+    <xs:attribute name="FileName" type="xs:string" use="optional" default="#FILE_NAME#" />
+    <xs:attribute name="FileNamePattern" type="xs:string" use="optional" default="#FILE_NAME_PATTERN#" />
+    
+    <xs:attribute name="OutputPath" type="xs:string" use="optional" default="#OUTPUT_PATH#" />
+    <xs:attribute name="XsdPath" type="xs:string" use="optional" default="#XSD_PATH#" />
+    <xs:attribute name="LibsPath" type="xs:string" use="optional" default="#LIBS_PATH#" />
+    <xs:attribute name="DocsPath" type="xs:string" use="optional" default="#DOCS_PATH#" />
+    <xs:attribute name="BuildLogsPath" type="xs:string" use="optional" default="#BUILDLOGS_PATH#" />
+    <xs:attribute name="AppsPath" type="xs:string" use="optional" default="#APPS_PATH#" />
+
+    <xs:attribute name="SchemeSufix" type="xs:string" use="optional" default="#SCHEME_SUFIX#" />
+    <xs:attribute name="SchemeURI" type="xs:string" use="optional" default="!SCHEME_URI!" />
+
+  </xs:complexType>
+  
+  <xs:complexType name="PathsType">
+    <xs:attribute name="BuildLogs" type="xs:string" use="optional" default="BuildLogs" />
+    <xs:attribute name="Libs" type="xs:string" use="optional" default="Libs" />
+    <xs:attribute name="Apps" type="xs:string" use="optional" default="Apps" />
+    <xs:attribute name="Xsd" type="xs:string" use="optional" default="Xsd" />
+    <xs:attribute name="Docs" type="xs:string" use="optional" default="Docs" />
+  </xs:complexType>
+
+  <xs:complexType name="ToolsType">
+    <xs:attribute name="Xsd" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://msdn.microsoft.com/en-us/library/x6c1kb0s%28v=vs.110%29.aspx</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Msbuild" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://msdn.microsoft.com/en-us/library/ms164311.aspx</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SnSigner" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://brutaldev.com/post/net-assembly-strong-name-signer</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SvnVersion" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://subversion.apache.org/</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="MakeCert" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://msdn.microsoft.com/en-us/library/windows/desktop/aa386968%28v=vs.85%29.aspx</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Sn" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://msdn.microsoft.com/en-us/library/k5b5tt23%28v=vs.110%29.aspx</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Pvk" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://msdn.microsoft.com/en-us/windows/hardware/drivers/devtest/pvk2pfx</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ConfuserEx" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>https://yck1509.github.io/ConfuserEx/</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Certificates" type="xs:string" use="optional" >
+      <xs:annotation><xs:documentation>Path for projects certificates, e.g: EXEC_PATH\..\..\..\..\01.FX.Certs</xs:documentation></xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="BuildElementType">
+    <xs:attribute name="BuildProject" type="xs:string" use="required" />
+    <xs:attribute name="Output" type="xs:string" use="optional" >
+      <xs:annotation>
+        <xs:documentation>Output full path for File. If null then output folder is used.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Id" type="xs:string" use="optional" >
+      <xs:annotation>
+        <xs:documentation>Used for configuration merging</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="FileName" type="xs:string" use="optional" />
+    <xs:attribute name="OutputFileName" type="xs:string" use="optional" />
+    <xs:attribute name="Type" type="BuildType" use="required" />
+    <xs:attribute name="Namespace" type="xs:string" use="optional" />
+    <xs:attribute name="SchemeSufix" type="xs:string" use="optional" />
+  </xs:complexType>
+
+  <xs:complexType name="BuildsType">
+    <xs:sequence>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Build" type="BuildElementType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

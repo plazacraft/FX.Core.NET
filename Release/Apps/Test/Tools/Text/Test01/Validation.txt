@@ -1,0 +1,12 @@
+﻿Replace values: VALUE 1, <any value>
+Don't replace (escape): [no change]
+Don't replace (escape): ^[no change]
+Replace values (escape only escape character): ^^VALUE 2
+Single line Section:  value: VALUE 1(section 1) 
+Multi line and nested section:
+
+	Topic for section 1: VALUE 1(section 1)
+	 
+		Inner data: VALUE 1(section 2)
+	
+

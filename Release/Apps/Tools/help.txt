@@ -1,0 +1,11 @@
+﻿FX.Core.NET.Tools.exe [-<option> <args>] [-<option> <args>] ...
+
+Options:
+keygen <output> [<keysize>] - Generates pair public and private key in XML format to output file
+license <license_option> <license_args> - Do aktions on license file. 
+   Available license_option:
+   sign <input_license> <private_key>: signs license xml file. Private key is a path to private key file in XML format, 
+   check <input_license> <public_key>: checks the license signature. Public key is a path to public key file in XML format
+
+Example:
+FX.Core.NET.Tools.exe -keygen keys.xml

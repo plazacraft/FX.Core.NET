@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+    targetNamespace="urn:x-fx.org:fx.core.net-1.0-lib.tools"
+    elementFormDefault="qualified"
+    xmlns="urn:x-fx.org:fx.core.net-1.0-lib.tools"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+>
+
+  <xs:element name="StateMachineDef" type="StateMachineDefType" />
+
+  <xs:complexType name="StateMachineDefType">
+    <xs:choice minOccurs="1" maxOccurs="1">
+      <xs:element name="IntMachine" type="IntMachineType" />
+      <xs:element name="MixedMachine" type="MixedMachineType" />
+      <xs:element name="StringMachine" type="StringMachineType" />
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="IntNextStateType">
+    <xs:attribute name="Action" type="xs:int" use="required" />
+    <xs:attribute name="NextState" type="xs:int" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="IntStateType">
+    <xs:sequence>
+      <xs:element name="IntNextState" type="IntNextStateType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Value" type="xs:int" use="required" />
+  </xs:complexType>
+  
+  <xs:complexType name="IntMachineType">
+    <xs:sequence>
+      <xs:element name="IntState" type="IntStateType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="StartState" type="xs:int" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="StringNextStateType">
+    <xs:attribute name="Action" type="xs:string" use="required" />
+    <xs:attribute name="NextState" type="xs:string" use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="StringStateType">
+    <xs:sequence>
+      <xs:element name="StringNextState" type="StringNextStateType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Value" type="xs:string" use="required" />
+  </xs:complexType>
+  
+  <xs:complexType name="StringMachineType">
+    <xs:sequence>
+      <xs:element name="StringState" type="StringStateType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="StartState" type="xs:string" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="MixedNextStateType">
+    <xs:attribute name="Action" type="xs:string" use="required" />
+    <xs:attribute name="NextState" type="xs:int" use="required" />
+  </xs:complexType>
+
+
+  <xs:complexType name="MixedStateType">
+    <xs:sequence>
+      <xs:element name="MixedNextState" type="MixedNextStateType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="Value" type="xs:int" use="required" />
+  </xs:complexType>
+
+  <xs:complexType name="MixedMachineType">
+    <xs:sequence>
+      <xs:element name="MixedState" type="MixedStateType" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+    <xs:attribute name="StartState" type="xs:int" use="required" />
+  </xs:complexType>
+
+
+</xs:schema>

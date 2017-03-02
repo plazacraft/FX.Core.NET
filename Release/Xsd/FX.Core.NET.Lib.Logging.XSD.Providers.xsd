@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema 
+    targetNamespace="urn:x-fx.org:fx.core.net-1.0-lib.logging"
+    elementFormDefault="qualified"
+    xmlns="urn:x-fx.org:fx.core.net-1.0-lib.logging"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+>
+  <xs:element name="Provider" type="ProviderType" />
+
+  <xs:complexType name="ProviderType" >
+    <xs:sequence>
+      <xs:element name="Providers" type="ProvidersType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+    <xs:attribute name="Type" type="xs:string" use="required" />
+    <xs:attribute name="ConnectionString" type="xs:string" use="optional" />
+    <xs:attribute name="TraceSeverity" type="TraceSeverityType" use="optional" default="All" />
+    <xs:attribute name="MessageHeaders" type="MessageHeaderType" use="optional" default="App DateTime Severity Message" />
+    <xs:attribute name="UseAppRelativePath" type="xs:boolean" use="optional" default="false" >
+      <xs:annotation>
+        <xs:documentation>
+          When false then realtive paths are relative to the working directory. If true then relative paths are relative to the application exec folder
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ThrowOnError" type="xs:boolean" use="optional" default="1" />
+
+    <xs:attribute name="TimeLimit" type="xs:int" use="optional" default="0 " >
+      <xs:annotation>
+        <xs:documentation>
+          Time limit of log life in milisecunds
+          If -1 or 0 and SizeLimit is grater than zero then value is ignored. Otherwise it checks how long log life and create new one if value is exceeded.
+          If -1 and SizeLimit is -1 then log will be create for every run of the logger.
+          If 0 and SizeLimit is 0 then logger will use always the same log
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="SizeLimit" type="xs:int" use="optional" default="0 " >
+      <xs:annotation>
+        <xs:documentation>
+          Size limit of log life in bytes.
+          If -1 or 0 and TimeLimit is grater than zero then value is ignored. Otherwise it checks size of the log and create new one if value is exceeded.
+          If -1 and TimeLimit is -1 then log will be create for every run of the logger.
+          If 0 and TimeLimit is 0 then logger will use always the same log
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+
+    <xs:attribute name="Data" type="xs:string" use="optional" />
+    <xs:anyAttribute />
+  </xs:complexType>
+  
+  
+  <xs:simpleType name="TraceSeverityType">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None"/>
+          <xs:enumeration value="Verbose"/>
+          <xs:enumeration value="Information"/>
+          <xs:enumeration value="Warning"/>
+          <xs:enumeration value="Error"/>
+          <xs:enumeration value="CriticalError"/>
+          <xs:enumeration value="All"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+
+  <xs:simpleType name="MessageHeaderType">
+    <xs:list>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="App"/>
+          <xs:enumeration value="Date"/>
+          <xs:enumeration value="Time"/>
+          <xs:enumeration value="DateTime"/>
+          <xs:enumeration value="Severity"/>
+          <xs:enumeration value="Assembly"/>
+          <xs:enumeration value="Method"/>
+          <xs:enumeration value="Trace"/>
+          <xs:enumeration value="Message"/>
+          <xs:enumeration value="Exception"/>
+          <xs:enumeration value="Data"/>
+          <xs:enumeration value="All"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:list>
+  </xs:simpleType>
+
+
+  
+  <xs:complexType name="ProvidersType">
+    <xs:sequence>
+        <xs:element name="Provider" minOccurs="0" maxOccurs="unbounded" type="ProviderType" />
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>

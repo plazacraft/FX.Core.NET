@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Provider xmlns="urn:x-fx.org:fx.core.net-1.0-lib.config" Type="FX.Core.NET.Lib.Config.Providers.HierarchicProvider, FX.Core.NET.Lib">
+  <Providers>
+    <Provider Type="FX.Core.NET.Lib.Config.Providers.AppConfigProvider, FX.Core.NET.Lib" />
+    <Provider Type="FX.Core.NET.Lib.Config.Providers.FileProvider, FX.Core.NET.Lib" ConnectionString="Config/Test01/Config_data.xml" Format="FX.Core.NET.Lib.Config.Format.XMLConfig, FX.Core.NET.Lib"  BackupOnSave="1" />
+    <Provider Type="FX.Core.NET.Lib.Config.Providers.FileProvider, FX.Core.NET.Lib" ConnectionString="Config/Test01/Config_data.csv" Format="FX.Core.NET.Lib.Config.Format.CsvConfig, FX.Core.NET.Lib" BackupOnSave="0"  />
+  </Providers>
+</Provider>

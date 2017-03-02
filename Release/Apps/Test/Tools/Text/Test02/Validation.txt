@@ -1,0 +1,7 @@
+﻿This is message with name: "Message Name" and description: "Message Descr"
+ROWS DATA:
+ id: 1, name: Row nr 1
+ id: 2, name: Row nr 2
+ id: 3, name: Row nr 3
+
+End of message with name: "Message Name"

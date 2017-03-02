@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LicenseConfig xmlns="urn:x-fx.org:fx.core.net-1.0-lib.license">
+  <Licenses IssuedFor="Public">
+    <Computers>
+      <Computer Name="*" />
+    </Computers>
+    <License Module="FX.Core.NET.*" Type="Test" Version="*.*.*.*" />
+  </Licenses>
+  <Signature>MYHjCMZn8OENeG3r5gSndh5JelLHmfoHNDeGOzTeq10hps8YxC/2+6vbWS/F5OArIWTDye9K6w4kkZ0sqoFhA0HF3uiV07BPROqrlLqJr+ZgVkdjDZaYR6UUMxWguar1TahzIAOqaef6A1a6RnzcQr2FU3GPRYONs74jFqi/i66mrF2AHhRvEImIrmQJVNXWspYamlLRhow0ZoLYBlcI9+QIPnduiHH656HGlHV8/T4GwHc63FN2kMzCahJ4tRBo0rv/coW/KMHtDTdlAfi+1zcLz+HrzpVFtF2h4O5Rx88NyDFEz+0/MaZNAmdBm0wJ4RNv8wrUuAvFtpfIg7mINA==</Signature>
+</LicenseConfig>

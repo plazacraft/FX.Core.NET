@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Provider xmlns="urn:x-fx.org:fx.core.net-1.0-lib.logging" Type="FX.Core.NET.Lib.Logging.Providers.HierarchicProvider, FX.Core.NET.Lib" TraceSeverity="Error">
+  <Providers>
+    <Provider Type="FX.Core.NET.Lib.Logging.Providers.FileProvider, FX.Core.NET.Lib" ConnectionString="Logging/Test02/log:.csv" MessageHeaders="All" />
+    <Provider Type="FX.Core.NET.Lib.Logging.Providers.FileProvider, FX.Core.NET.Lib" ConnectionString="Logging/Test02/error.csv" TraceSeverity="Warning Error" MessageHeaders="All" />
+  </Providers>
+</Provider>

@@ -1,0 +1,14 @@
+﻿FX.Core.NET.Build.exe [[-<option> <args>] -<option> <args>...]
+
+Options
+cnf <file1>[[ <file2>] file3...] - load configuration files. Last file is the most important (this is mandatory for almost all options)
+mcert <name> <password> - creates certificates for delay signed assemblies
+xsd <projectPath> <buildProject> - build xsd project files
+assVer <projectPath> <buildProject> - create version for project assembly
+regAss <snkFile> - register delay signed assemblies to run without strong name veryfication 
+uregAss <snkFile> - unregister delay signed assemblies 
+sign <projectPath> <buildProject> <config> - sign the assembly
+obfuscate <projectPath> <buildProject> <config> - obfuscate the assembly
+build <projectPath> <config> <outputfolder> - build solution, if certfilepath() and password are provided then assemblies will be fully signed and obfuscated
+
+

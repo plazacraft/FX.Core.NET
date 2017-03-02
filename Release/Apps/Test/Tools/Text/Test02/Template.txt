@@ -1,0 +1,5 @@
+﻿[HEADER]This is message with name: "[name]" and description: "[desc]"[/HEADER]
+ROWS DATA:
+[ROWS] id: [id], name: [name]
+[/ROWS]
+[HEADER]End of message with name: "[name]"[/HEADER]

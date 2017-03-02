@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StateMachineDef xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+                 xmlns="urn:x-fx.org:fx.core.net-1.0-lib.tools">
+                 
+  <StringMachine StartState="START">
+    <StringState Value="START">
+      <StringNextState NextState="STATE 1" Action="GOTO 1" />
+      <StringNextState NextState="STATE 2" Action="GOTO 2" />
+    </StringState>
+    <StringState Value="STATE 1">
+
+    </StringState>
+    <StringState Value="STATE 2">
+      <StringNextState NextState="START" Action="RESTART" />
+    </StringState>
+  </StringMachine>
+</StateMachineDef>
